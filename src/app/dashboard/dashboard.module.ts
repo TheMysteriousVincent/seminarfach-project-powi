@@ -5,7 +5,7 @@ import { AppDashboardRoutesModule } from './dashboard.routes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule
+  MatButtonModule, MatDividerModule, MatCardModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,7 +14,9 @@ import {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatCardModule
   ],
   declarations: [
     AppDashboardComponent

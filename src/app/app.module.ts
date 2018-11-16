@@ -5,11 +5,18 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatMenuModule,
+  MatMenuItem,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 import { AppDashboardModule } from './dashboard/dashboard.module';
 
@@ -25,9 +32,15 @@ import { AppDashboardModule } from './dashboard/dashboard.module';
     MatButtonToggleModule,
     AppDashboardModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

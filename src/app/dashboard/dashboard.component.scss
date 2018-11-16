@@ -1,0 +1,25 @@
+
+.dashboard-title {
+  text-align: center;
+}
+
+.dashboard-description {
+  font-size: 20px;
+}
+
+.dashboard-card-width {
+  max-width: 800px;
+  min-width: 200px;
+}
+
+.dashboard-card-margin {
+  margin: 20px 20px 0px 20px;
+}
+
+.dashboard-center-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-self: center;
+}

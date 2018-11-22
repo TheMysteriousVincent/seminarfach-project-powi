@@ -11,8 +11,11 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./questions.component.scss']
 })
 export class AppQuestionsComponent implements OnInit {
-  public data: Categories;
-  public fetched: boolean;
+  constructor(
+    public questionData: AppDataService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
+
   public routeFetched: boolean;
   public randomQuestions: boolean;
   public routeCategory: number;
@@ -25,9 +28,9 @@ export class AppQuestionsComponent implements OnInit {
   public getRandomAnswers(categoryIndex: number, questionIndex: number): Answer[] {
     let answers: Answer[] = [];
 
-    for (let i = 0; i < this.data.categories[categoryIndex].questions[questionIndex].answers.length; i++) {
+    for (let i = 0; i < this.questionData.getCategoryQuestion(categoryIndex, questionIndex).answers.length; i++) {
       answers.push(new Answer(
-        this.data.categories[categoryIndex].questions[questionIndex].answers[i],
+        this.questionData.getCategoryQuestion(categoryIndex, questionIndex).answers[i],
         i
       ));
     }
@@ -54,39 +57,20 @@ export class AppQuestionsComponent implements OnInit {
 
     return array;
   }
-
-  constructor(
-    private questionData: AppDataService,
-    private activatedRoute: ActivatedRoute,
-  ) {}
-
   ngOnInit() {
-    this.questionData.getCategories().subscribe(data => {
-      this.fetched = true;
-      this.data = data;
-      this.randomAnswers = this.getRandomAnswers(this.currentCategory, this.currentQuestion);
-    });
     this.activatedRoute.queryParams.subscribe(params => {
       this.randomQuestions = (params['random_questions'] === 'true');
-      this.routeCategory = parseInt(params['current_category'], 10) || 0;
+      this.routeCategory = parseInt(params['category_index'], 10) || 0;
       if (this.routeCategory < 0) {
         this.routeCategory = 0;
       }
-      this.currentQuestion = parseInt(params['current_question'], 10) || 0;
+      this.currentQuestion = parseInt(params['question_index'], 10) || 0;
       if (this.currentQuestion < 0) {
         this.currentQuestion = 0;
       }
       this.routeFetched = true;
+      this.randomAnswers = this.getRandomAnswers(this.currentCategory, this.currentQuestion);
     });
-  }
-
-  nextQuestion() {
-    this.currentCategory = Math.floor(Math.random() * this.data.categories.length);
-    this.currentQuestion = Math.floor(Math.random() * this.data.categories[this.currentCategory].questions.length);
-    this.step = 0;
-  }
-
-  nextRandomQuestion() {
   }
 }
 

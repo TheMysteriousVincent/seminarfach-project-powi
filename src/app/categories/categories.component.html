@@ -5,20 +5,19 @@
         <button *ngIf="categoryIndex > -1" (click)="categoryIndex = -1" mat-icon-button><mat-icon>arrow_back</mat-icon></button>
       <p>Kategorien</p>
     </mat-card-title>
-    <mat-card-subtitle *ngIf="categoryIndex > -1">{{data.categories[categoryIndex].title}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="categoryIndex > -1">{{this.questionData.getCategories().categories[categoryIndex].title}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="categories-content">
-    <mat-spinner [diameter]="40" class="categories-spinner" *ngIf="!fetched"></mat-spinner>
-    <div *ngIf="fetched && categoryIndex == -1">
-      <section *ngFor="let category of data.categories; let i = index">
+    <div *ngIf="categoryIndex == -1">
+      <section *ngFor="let category of this.questionData.getCategories().categories; let i = index">
           <button class="category-button" mat-flat-button color="primary" (click)="categoryIndex = i">{{category.title}}</button>
       </section>
     </div>
-    <div *ngIf="fetched && categoryIndex > -1">
-        <section *ngFor="let question of data.categories[categoryIndex].questions">
+    <div *ngIf="categoryIndex > -1">
+        <section *ngFor="let question of this.questionData.getCategories().categories[categoryIndex].questions">
             <button class="category-button" mat-flat-button color="primary">{{question.title}}</button>
         </section>
     </div>
-    <p color="accent" *ngIf="categoryIndex > -1 && data.categories[categoryIndex].questions.length <= 0">Keine Fragen eingetragen.</p>
+    <p color="accent" *ngIf="categoryIndex > -1 && this.questionData.getCategories().categories[categoryIndex].questions.length <= 0">Keine Fragen eingetragen.</p>
   </mat-card-content>
 </mat-card>

@@ -9,20 +9,13 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class AppCategoriesComponent implements OnInit {
-  public data: Categories;
-  public fetched: boolean;
-
   public categoryIndex = -1;
   public nextStep = false;
 
   constructor(
-    private questionData: AppDataService
+    public questionData: AppDataService
   ) {}
 
   ngOnInit() {
-    this.questionData.getCategories().subscribe(data => {
-      this.fetched = true;
-      this.data = data;
-    });
   }
 }

@@ -5,7 +5,7 @@ import { AppQuestionsRoutesModule } from './questions.routes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatDividerModule, MatCardModule, MatCheckboxModule
+  MatButtonModule, MatDividerModule, MatCardModule, MatCheckboxModule, MatListModule
 } from '@angular/material';
 
 @NgModule({
@@ -17,7 +17,8 @@ import {
     MatButtonModule,
     MatDividerModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatListModule
   ],
   declarations: [
     AppQuestionsComponent

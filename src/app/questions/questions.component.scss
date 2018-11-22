@@ -1,7 +1,7 @@
 
 .questions-card-width {
   max-width: 800px;
-  min-width: 400px;
+  min-width: 200px;
 }
 
 .questions-card-margin {
@@ -10,6 +10,12 @@
 
 .question-section-answers {
   margin: 20px 20px 0px 20px;
+}
+
+.question-section-answers .mat-checkbox {
+  padding: 5px 0px 5px 0px;
+  height: auto;
+  display: block;
 }
 
 .question-question-subtitle {

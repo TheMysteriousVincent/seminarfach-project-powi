@@ -7,4 +7,12 @@
   flex: 1 1 auto;
 }
 
+.app-center-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-self: center;
+}
+
 

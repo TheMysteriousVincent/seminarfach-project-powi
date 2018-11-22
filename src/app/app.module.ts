@@ -19,6 +19,10 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
 import { AppDashboardModule } from './dashboard/dashboard.module';
+import { AppQuestionsModule } from './questions/questions.module';
+
+import { HttpClientModule } from '@angular/common/http';
+import { AppCategoriesModule } from './categories/categories.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,8 @@ import { AppDashboardModule } from './dashboard/dashboard.module';
     MatButtonModule,
     MatButtonToggleModule,
     AppDashboardModule,
+    AppQuestionsModule,
+    AppCategoriesModule,
     MatTabsModule,
     MatCardModule,
     MatToolbarModule,
@@ -38,7 +44,8 @@ import { AppDashboardModule } from './dashboard/dashboard.module';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

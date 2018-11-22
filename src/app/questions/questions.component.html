@@ -1,0 +1,21 @@
+
+<mat-card class="questions-card-width questions-card-margin">
+  <mat-card-header>
+    <mat-card-title>
+      <p>Frage:</p>
+    </mat-card-title>
+    <mat-card-subtitle class="question-question-subtitle">
+      <p>{{data.categories[this.currentCategory].questions[this.currentQuestion].title}}</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content class="questions-content" *ngIf="fetched">
+    <section class="question-section-answers" *ngFor="let answer of randomAnswers">
+      <mat-checkbox color="primary" [value]="answer.index">{{answer.title}}</mat-checkbox>
+    </section>
+    <section class="questions-section-buttons">
+      <button mat-raised-button color="warn" class="questions-section-button">Lösung</button>
+      <button mat-raised-button color="primary" class="questions-section-button">Weiter</button>
+    </section>
+  </mat-card-content>
+</mat-card>

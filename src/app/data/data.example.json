@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "title": "Handel",
+      "questions": [
+        {
+          "title": "Was ist Protektionismus?",
+          "answers": [
+            "Der Staat versucht, inländische Anbieter auf dem Inlandsmarkt gegenüber ausländischen Anbietern zu benachteiligen.",
+            "Der Staat versucht, ausländische Anbieter auf dem Inlandsmarkt gegenüber inländischen Anbietern zu benachteiligen.",
+            "Bestimmte Marktteilnehmer werden vom globalen Markt ausgeschlossen."
+          ],
+          "correct_answers": [1]
+        },
+        {
+          "title": "Was ist Protektionismus?2",
+          "answers": [
+            "Der Staat versucht, inländische Anbieter auf dem Inlandsmarkt gegenüber ausländischen Anbietern zu benachteiligen.",
+            "Der Staat versucht, ausländische Anbieter auf dem Inlandsmarkt gegenüber inländischen Anbietern zu benachteiligen.",
+            "Bestimmte Marktteilnehmer werden vom globalen Markt ausgeschlossen."
+          ],
+          "correct_answers": [1]
+        },
+        {
+          "title": "Was ist Protektionismus?3",
+          "answers": [
+            "Der Staat versucht, inländische Anbieter auf dem Inlandsmarkt gegenüber ausländischen Anbietern zu benachteiligen.",
+            "Der Staat versucht, ausländische Anbieter auf dem Inlandsmarkt gegenüber inländischen Anbietern zu benachteiligen.",
+            "Bestimmte Marktteilnehmer werden vom globalen Markt ausgeschlossen."
+          ],
+          "correct_answers": [1]
+        },
+        {
+          "title": "Was ist Protektionismus?4",
+          "answers": [
+            "Der Staat versucht, inländische Anbieter auf dem Inlandsmarkt gegenüber ausländischen Anbietern zu benachteiligen.",
+            "Der Staat versucht, ausländische Anbieter auf dem Inlandsmarkt gegenüber inländischen Anbietern zu benachteiligen.",
+            "Bestimmte Marktteilnehmer werden vom globalen Markt ausgeschlossen."
+          ],
+          "correct_answers": [1]
+        },
+        {
+          "title": "Was ist Protektionismus nicht?",
+          "answers": [
+            "Antwortmöglichkeit 1",
+            "Antwortmöglichkeit 2",
+            "Antwortmöglichkeit 3"
+          ],
+          "correct_answers": [0, 1]
+        }
+      ]
+    },
+    {
+      "title": "Politk",
+      "questions": []
+    }
+  ]
+}

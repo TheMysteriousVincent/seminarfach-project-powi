@@ -11,7 +11,9 @@ import {
   MatMenuModule,
   MatMenuItem,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,7 +47,9 @@ import { AppCategoriesModule } from './categories/categories.module';
     MatFormFieldModule,
     MatInputModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

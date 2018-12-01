@@ -370,9 +370,9 @@ MIT
 
 @angular/material/icon
 
-@angular/material/toolbar
+@angular/material/sidenav
 
-@angular/material/menu
+@angular/material/toolbar
 
 core-js
 MIT

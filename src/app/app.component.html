@@ -1,17 +1,29 @@
-<mat-toolbar color="primary" backgroundColor="primary">
-  <span>Politik/Wirtschaft Q</span>
-  <span class="app-fill-remaining-space"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <a mat-menu-item [routerLink]="'/dashboard'">Dashboard</a>
-    <a mat-menu-item [routerLink]="'/search'">Suche</a>
-    <a mat-menu-item [routerLink]="'/random'">Zufallsfragen</a>
-    <a mat-menu-item [routerLink]="'/categories'">Kategorien</a>
-  </mat-menu>
-</mat-toolbar>
+<mat-drawer-container fullscreen>
+  <mat-drawer #drawer class="app-drawer">
+      <mat-toolbar color="primary" backgroundColor="primary">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <span>{{title}}</span>
+      </mat-toolbar>
+      <mat-action-list>
+        <button mat-list-item [routerLink]="'/dashboard'">Dashboard</button>
+        <!--<button mat-list-item [routerLink]="'/search'">Suche</button>-->
+        <button mat-list-item [routerLink]="'/questions'" [queryParams]="{random_questions: true}">Zufallsfragen</button>
+        <button mat-list-item [routerLink]="'/categories'">Kategorien</button>
+      </mat-action-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary" backgroundColor="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <span>{{title}}</span>
+      <span class="app-fill-remaining-space"></span>
+    </mat-toolbar>
 
-<div class="app-center-wrapper">
-    <router-outlet></router-outlet>
-</div>
+    <div class="app-center-wrapper">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -352,19 +352,27 @@ THE SOFTWARE.
 
 @angular/material/card
 
-@angular/material/toolbar
+@angular/forms
+MIT
 
 @angular/animations
 MIT
+
+@angular/material/core
+
+@angular/material/list
+
+@angular/material/checkbox
+
+@angular/material/divider
 
 @angular/material/button
 
 @angular/material/icon
 
-@angular/material/menu
+@angular/material/toolbar
 
-@angular/forms
-MIT
+@angular/material/menu
 
 core-js
 MIT

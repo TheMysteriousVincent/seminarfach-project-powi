@@ -12,12 +12,6 @@
   margin: 20px 20px 0px 20px;
 }
 
-.question-section-answers .mat-checkbox {
-  padding: 5px 0px 5px 0px;
-  height: auto;
-  display: block;
-}
-
 .question-question-subtitle {
   margin: 10px 10px 20px 30px;
 }
@@ -33,4 +27,26 @@
 
 .questions-content {
   margin-top: 20px;
+}
+
+.mat-warn-color {
+  color: #f44336;
+}
+
+.mat-primary-color {
+  color: #3f51b5;
+}
+
+.questions-error-message {
+  text-align: center;
+  font-size: large;
+  font-weight: 400;
+  color: #f44336;
+}
+
+.questions-successful-message {
+  text-align: center;
+  font-size: large;
+  font-weight: 400;
+  color: #3f51b5;
 }

@@ -1,19 +1,27 @@
 
 import { Component } from '@angular/core';
-import { AppDataService, Categories } from '../data/data.service';
+import { AppDataService, Categories, Question } from '../data/data.service';
 import { OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import {
+  MatButton, MatButtonModule,
+  MAT_CHECKBOX_CLICK_ACTION
+} from '@angular/material';
 
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.scss']
+  styleUrls: ['./questions.component.scss'],
+  providers: [
+    { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'noop' }
+  ]
 })
 export class AppQuestionsComponent implements OnInit {
   constructor(
     public questionData: AppDataService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   public routeFetched: boolean;
@@ -22,21 +30,80 @@ export class AppQuestionsComponent implements OnInit {
   public routeQuestion: number;
   public currentCategory = 0;
   public currentQuestion = 0;
-  public step = 0;
-  public randomAnswers: Answer[] = [];
+  public solutionActive: boolean;
+  public a1: Answer;
+  public a2: Answer;
+  public a3: Answer;
+  public a1_checked = false;
+  public a2_checked = false;
+  public a3_checked = false;
 
-  public getRandomAnswers(categoryIndex: number, questionIndex: number): Answer[] {
-    let answers: Answer[] = [];
+  public getRandomAnswers(categoryIndex: number, questionIndex: number) {
+    this.setAnswers(this.shuffleArray(this.getQuestionAnswers(this.questionData.getCategoryQuestion(categoryIndex, questionIndex))));
+  }
 
-    for (let i = 0; i < this.questionData.getCategoryQuestion(categoryIndex, questionIndex).answers.length; i++) {
+  private getQuestionAnswers(question: Question): Answer[] {
+    const answers: Answer[] = [];
+    for (let i = 0; i < Math.min(3, question.answers.length); i++) {
       answers.push(new Answer(
-        this.questionData.getCategoryQuestion(categoryIndex, questionIndex).answers[i],
-        i
+        question.answers[i],
+        i,
+        question.correct_answers.includes(i)
       ));
     }
-
-    answers = this.shuffleArray(answers);
     return answers;
+  }
+
+  private setAnswers(answers: Answer[]) {
+    switch (answers.length) {
+      case 0:
+        this.a1 = null;
+        this.a2 = null;
+        this.a3 = null;
+        break;
+      case 1:
+        this.a1 = answers[0];
+        this.a2 = null;
+        this.a3 = null;
+        break;
+      case 2:
+        this.a1 = answers[0];
+        this.a2 = answers[1];
+        this.a3 = null;
+        break;
+      case 3:
+        this.a1 = answers[0];
+        this.a2 = answers[1];
+        this.a3 = answers[2];
+        break;
+    }
+  }
+
+  public nextQuestion() {
+    let nextQuestion: Question;
+    if (this.randomQuestions) {
+      let qIs = this.questionData.getRandomQuestion();
+      while (qIs.categoryIndex === this.currentCategory && qIs.questionIndex === this.currentQuestion) {
+        qIs = this.questionData.getRandomQuestion();
+      }
+      nextQuestion = this.questionData.getCategoryQuestion(qIs.categoryIndex, qIs.questionIndex);
+    } else {
+      const category = this.questionData.getCategory(this.currentCategory);
+
+      if (this.currentQuestion + 1 < category.questions.length) {
+        nextQuestion = this.questionData.getCategoryQuestion(this.currentCategory, this.currentQuestion + 1);
+        this.currentQuestion += 1;
+      } else {
+        this.router.navigateByUrl('/categories');
+        return;
+      }
+    }
+
+    this.solutionActive = false;
+    this.a1_checked = false;
+    this.a2_checked = false;
+    this.a3_checked = false;
+    this.setAnswers(this.getQuestionAnswers(nextQuestion));
   }
 
   private shuffleArray(array) {
@@ -69,7 +136,7 @@ export class AppQuestionsComponent implements OnInit {
         this.currentQuestion = 0;
       }
       this.routeFetched = true;
-      this.randomAnswers = this.getRandomAnswers(this.currentCategory, this.currentQuestion);
+      this.getRandomAnswers(this.currentCategory, this.currentQuestion);
     });
   }
 }
@@ -77,9 +144,11 @@ export class AppQuestionsComponent implements OnInit {
 export class Answer {
   title: string;
   index: number;
+  correct: boolean;
 
-  constructor(title: string, index: number) {
+  constructor(title: string, index: number, correct: boolean) {
     this.title = title;
     this.index = index;
+    this.correct = correct;
   }
 }

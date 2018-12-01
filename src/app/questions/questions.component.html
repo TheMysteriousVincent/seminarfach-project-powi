@@ -10,12 +10,32 @@
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content class="questions-content">
-    <mat-list #answers class="question-section-answers">
-      <mat-checkbox mat-list-option color="primary" *ngFor="let answer of randomAnswers" [value]="answer.index">{{answer.title}}</mat-checkbox>
-    </mat-list>
+    <section class="questions-section-checkboxes">
+      <mat-list dense>
+        <mat-list-item *ngIf="a1 != null"><mat-checkbox color="{{solutionActive ? a1.correct ? 'primary' : 'warn' : 'primary'}}"
+          [ngClass]="solutionActive ? a1.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+          [(ngModel)]="a1_checked"
+          (click)="!solutionActive ? a1_checked = !a1_checked : false"
+          [disableRipple]="solutionActive">{{a1.title}}</mat-checkbox></mat-list-item>
+        <mat-list-item *ngIf="a2 != null"><mat-checkbox color="{{solutionActive ? a2.correct ? 'primary' : 'warn' : 'primary'}}"
+          [ngClass]="solutionActive ? a2.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+          [(ngModel)]="a2_checked"
+          (click)="!solutionActive ? a2_checked = !a2_checked : false"
+          [disableRipple]="solutionActive">{{a2.title}}</mat-checkbox></mat-list-item>
+        <mat-list-item *ngIf="a3 != null"><mat-checkbox color="{{solutionActive ? a3.correct ? 'primary' : 'warn' : 'primary'}}"
+          [ngClass]="solutionActive ? a3.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+          [(ngModel)]="a3_checked"
+          (click)="!solutionActive ? a3_checked = !a3_checked : false"
+          [disableRipple]="solutionActive">{{a3.title}}</mat-checkbox></mat-list-item>
+      </mat-list>
+    </section>
+    <section class="questions-section-response-message">
+      <p class="questions-error-message" *ngIf="solutionActive && !(a1_checked == a1.correct && a2_checked == a2.correct && a3_checked == a3.correct)">Du hast die Frage falsch beantwortet.</p>
+      <p class="questions-successful-message" *ngIf="solutionActive && a1_checked == a1.correct && a2_checked == a2.correct && a3_checked == a3.correct">Super! Du hast die Frage richtig beantwortet!</p>
+    </section>
     <section class="questions-section-buttons">
-      <button mat-raised-button color="warn" class="questions-section-button">Lösung</button>
-      <button mat-raised-button color="primary" class="questions-section-button">Weiter</button>
+      <button mat-raised-button [disabled]="solutionActive" color="warn" class="questions-section-button" (click)="solutionActive = true;">Lösung</button>
+      <button mat-raised-button color="primary" class="questions-section-button"(click)="!solutionActive ? solutionActive = true : nextQuestion()" >Weiter</button>
     </section>
   </mat-card-content>
 </mat-card>

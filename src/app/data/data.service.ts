@@ -24,6 +24,28 @@ export class AppDataService {
   getCategoryQuestion(categoryIndex: number, questionIndex: number): Question {
     return this.categoryData.categories[categoryIndex].questions[questionIndex];
   }
+
+  getRandomQuestion(): QuestionIndex {
+    let categoryIndex = Math.floor(Math.random() * Math.floor(this.categoryData.categories.length - 1));
+
+    while (this.categoryData.categories[categoryIndex].questions.length === 0) {
+      categoryIndex = Math.floor(Math.random() * Math.floor(this.categoryData.categories.length - 1));
+    }
+
+    const questionIndex = Math.floor(Math.random() * Math.floor(this.categoryData.categories[categoryIndex].questions.length));
+
+    return new QuestionIndex(categoryIndex, questionIndex);
+  }
+}
+
+export class QuestionIndex {
+  public categoryIndex: number;
+  public questionIndex: number;
+
+  constructor(cI: number, qI: number) {
+    this.categoryIndex = cI;
+    this.questionIndex = qI;
+  }
 }
 
 export class Categories {

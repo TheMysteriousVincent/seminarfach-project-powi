@@ -14,8 +14,8 @@
       </section>
     </div>
     <div *ngIf="categoryIndex > -1">
-        <section *ngFor="let question of this.questionData.getCategories().categories[categoryIndex].questions">
-            <button class="category-button" mat-flat-button color="primary">{{question.title}}</button>
+        <section *ngFor="let question of this.questionData.getCategories().categories[categoryIndex].questions; let i = index">
+            <button class="category-button" mat-flat-button color="primary" [routerLink]="['/questions']" [queryParams]="{category_index: categoryIndex, question_index: i}">{{question.title}}</button>
         </section>
     </div>
     <p color="accent" *ngIf="categoryIndex > -1 && this.questionData.getCategories().categories[categoryIndex].questions.length <= 0">Keine Fragen eingetragen.</p>

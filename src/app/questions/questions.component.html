@@ -10,6 +10,7 @@
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content class="questions-content">
+    <h4>Antworten (mehrere möglich):</h4>
     <section class="questions-section-checkboxes">
       <mat-list dense>
         <mat-list-item *ngIf="a1 != null"><mat-checkbox color="{{solutionActive ? a1.correct ? 'primary' : 'warn' : 'primary'}}"

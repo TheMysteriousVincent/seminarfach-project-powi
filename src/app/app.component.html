@@ -7,10 +7,10 @@
         <span>{{title}}</span>
       </mat-toolbar>
       <mat-action-list>
-        <button mat-list-item [routerLink]="'/dashboard'">Dashboard</button>
+        <button mat-list-item [routerLink]="'/dashboard'" (click)="drawer.toggle()">Dashboard</button>
         <!--<button mat-list-item [routerLink]="'/search'">Suche</button>-->
-        <button mat-list-item [routerLink]="'/questions'" [queryParams]="{random_questions: true}">Zufallsfragen</button>
-        <button mat-list-item [routerLink]="'/categories'">Kategorien</button>
+        <button mat-list-item [routerLink]="'/questions'" [queryParams]="{random_questions: true}" (click)="drawer.toggle()">Zufallsfragen</button>
+        <button mat-list-item [routerLink]="'/categories'" (click)="drawer.toggle()">Kategorien</button>
       </mat-action-list>
   </mat-drawer>
   <mat-drawer-content>

@@ -9,14 +9,26 @@
   </mat-card-header>
   <mat-card-content class="categories-content">
     <div *ngIf="categoryIndex == -1">
-      <section *ngFor="let category of this.questionData.getCategories().categories; let i = index">
+      <mat-action-list>
+        <button mat-list-item
+          (click)="categoryIndex = i"
+          *ngFor="let category of this.questionData.getCategories().categories; let i = index">{{category.title}}
+          <mat-divider *ngIf="i < this.questionData.getCategories().categories.length - 1"></mat-divider>
+        </button>
+      </mat-action-list>
+      <!--<section *ngFor="let category of this.questionData.getCategories().categories; let i = index">
           <button class="category-button" mat-flat-button color="primary" (click)="categoryIndex = i">{{category.title}}</button>
-      </section>
+      </section>-->
     </div>
     <div *ngIf="categoryIndex > -1">
-        <section *ngFor="let question of this.questionData.getCategories().categories[categoryIndex].questions; let i = index">
-            <button class="category-button" mat-flat-button color="primary" [routerLink]="['/questions']" [queryParams]="{category_index: categoryIndex, question_index: i}">{{question.title}}</button>
-        </section>
+        <mat-action-list>
+          <button mat-list-item
+            [routerLink]="['/questions']"
+            [queryParams]="{category_index: categoryIndex, question_index: i}"
+            *ngFor="let question of this.questionData.getCategories().categories[categoryIndex].questions; let i = index">{{question.title}}
+            <mat-divider *ngIf="i < this.questionData.getCategories().categories[categoryIndex].questions.length - 1"></mat-divider>
+          </button>
+        </mat-action-list>
     </div>
     <p color="accent" *ngIf="categoryIndex > -1 && this.questionData.getCategories().categories[categoryIndex].questions.length <= 0">Keine Fragen eingetragen.</p>
   </mat-card-content>

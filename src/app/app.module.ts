@@ -26,6 +26,15 @@ import { AppQuestionsModule } from './questions/questions.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppCategoriesModule } from './categories/categories.module';
 
+import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
+
+export class HammerConfig extends HammerGestureConfig {
+  overrides = <any> {
+    'pinch': { enable: false },
+    'rotate': { enable: false }
+  };
+}
+
 @NgModule({
   declarations: [
     AppComponent
@@ -51,7 +60,12 @@ import { AppCategoriesModule } from './categories/categories.module';
     MatSidenavModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

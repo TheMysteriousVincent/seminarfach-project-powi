@@ -10,24 +10,26 @@
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content class="questions-content">
+    <h4>Antworten (mehrere möglich):</h4>
     <section class="questions-section-checkboxes">
-      <mat-list dense>
-        <mat-list-item *ngIf="a1 != null"><mat-checkbox color="{{solutionActive ? a1.correct ? 'primary' : 'warn' : 'primary'}}"
-          [ngClass]="solutionActive ? a1.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
-          [(ngModel)]="a1_checked"
-          (click)="!solutionActive ? a1_checked = !a1_checked : false"
-          [disableRipple]="solutionActive">{{a1.title}}</mat-checkbox></mat-list-item>
-        <mat-list-item *ngIf="a2 != null"><mat-checkbox color="{{solutionActive ? a2.correct ? 'primary' : 'warn' : 'primary'}}"
-          [ngClass]="solutionActive ? a2.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
-          [(ngModel)]="a2_checked"
-          (click)="!solutionActive ? a2_checked = !a2_checked : false"
-          [disableRipple]="solutionActive">{{a2.title}}</mat-checkbox></mat-list-item>
-        <mat-list-item *ngIf="a3 != null"><mat-checkbox color="{{solutionActive ? a3.correct ? 'primary' : 'warn' : 'primary'}}"
-          [ngClass]="solutionActive ? a3.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
-          [(ngModel)]="a3_checked"
-          (click)="!solutionActive ? a3_checked = !a3_checked : false"
-          [disableRipple]="solutionActive">{{a3.title}}</mat-checkbox></mat-list-item>
-      </mat-list>
+      <mat-checkbox color="{{solutionActive ? a1.correct ? 'primary' : 'warn' : 'primary'}}"
+        *ngIf="a1 != null"
+        [ngClass]="solutionActive ? a1.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+        [(ngModel)]="a1_checked"
+        (click)="!solutionActive ? a1_checked = !a1_checked : false"
+        [disableRipple]="solutionActive">{{a1.title}}</mat-checkbox>
+      <mat-checkbox color="{{solutionActive ? a2.correct ? 'primary' : 'warn' : 'primary'}}"
+        *ngIf="a2 != null"
+        [ngClass]="solutionActive ? a2.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+        [(ngModel)]="a2_checked"
+        (click)="!solutionActive ? a2_checked = !a2_checked : false"
+        [disableRipple]="solutionActive">{{a2.title}}</mat-checkbox>
+      <mat-checkbox color="{{solutionActive ? a3.correct ? 'primary' : 'warn' : 'primary'}}"
+        *ngIf="a3 != null"
+        [ngClass]="solutionActive ? a3.correct ? 'mat-primary-color' : 'mat-warn-color' : ''"
+        [(ngModel)]="a3_checked"
+        (click)="!solutionActive ? a3_checked = !a3_checked : false"
+        [disableRipple]="solutionActive">{{a3.title}}</mat-checkbox>
     </section>
     <section class="questions-section-response-message">
       <p class="questions-error-message" *ngIf="solutionActive && !(a1_checked == a1.correct && a2_checked == a2.correct && a3_checked == a3.correct)">Du hast die Frage falsch beantwortet.</p>

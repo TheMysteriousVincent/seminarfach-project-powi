@@ -31,8 +31,7 @@ def main():
 
 					if amount > 1:
 						categories.append(row[0])
-
-					print("adding category ", row[0])
+						print("adding category ", row[0])
 
 		for category in categories:
 			print("fetching questions for category ", category)
@@ -55,7 +54,7 @@ def main():
 						correctStrAnswers = str.split(row[9], ",")
 						correctAnswers = []
 						for correctAnswerStr in correctStrAnswers:
-							correctAnswers.append(int(correctAnswerStr))
+							correctAnswers.append(int(correctAnswerStr)-1)
 						print("adding question ", row[1])
 						questions.append({
 							'title': row[2],

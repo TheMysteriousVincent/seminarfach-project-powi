@@ -16,9 +16,6 @@
           <mat-divider *ngIf="i < this.questionData.getCategories().categories.length - 1"></mat-divider>
         </button>
       </mat-action-list>
-      <!--<section *ngFor="let category of this.questionData.getCategories().categories; let i = index">
-          <button class="category-button" mat-flat-button color="primary" (click)="categoryIndex = i">{{category.title}}</button>
-      </section>-->
     </div>
     <div *ngIf="categoryIndex > -1">
         <mat-action-list>
